@@ -1,0 +1,55 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6" id="img-bg"></div>
+        <div class="col-md-6 mt-5 mb-5">
+
+            <div class="row d-flex justify-content-center">
+                <div class="col md-10">
+                    <h1 class="text-center">Cadastro</h1>
+
+                    <div class="form-group">
+                        <label for="Nome">Nome</label>
+                        <input [(ngModel)]='user.nome' class="form-control" type="text" name="nome" id="nome" placeholder="Seu nome">
+                    </div>
+                    <div class="form-group mt-3">
+                        <label for="usuario">Email</label>
+                        <input [(ngModel)]='user.email' class="form-control" type="text" name="email" id="email" placeholder="Seu usuário">
+                    </div>
+                    <div class="form-group mt-3">
+                        <label for="Senha">Senha</label>
+                        <input (input)='confirmeSenha($event)' class="form-control" type="password" name="senha" id="senha" placeholder="Sua senha">
+                    </div>
+                    <div class="form-group mt-3">
+                        <label for="confirmarSenha">Confirmar Senha</label>
+                        <input [(ngModel)]='user.senha' class="form-control" type="password" name="confirmSenha" id="confirmSenha" placeholder="Confirme sua senha">
+                    </div>
+
+
+                    <div class="row d-flex align-items-center color-text">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="tipo">Tipo de cadastro</label>
+                                <select class="form-control" name="tipo" id="tipo" [(ngModel)]='user.tipo'>
+                                    <option>Selecione um tipo de cadastro</option>
+                                    <option value="Normal">Normal</option>
+                                    <option value="Adm">Administrador</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div *ngIf="userAdm()" class="form-group">
+                                <label for="code">Código de administrador</label><input [(ngModel)]='code'
+                                    class="form-control" type="password" name="code">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-center mt-3">
+                        <button type="submit" class="btn btn-danger me-3" routerLink='/entrar'>Cancelar</button>
+                        <button type="submit" class="btn btn-success" (click)="register()">Cadastrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,119 @@
+<div class="container-fluid">
+  <div class="row bg-n d-flex align-items-center">
+    <div class="col-md-6">
+      <div class="row d-flex justify-content-center">
+        <div class="col-md-6 text-dark">
+          <h2 class="fs-54">Seja Bem Vindo(a)</h2>
+        </div>
+      </div>
+      <div class="row d-flex justify-content-center mt-3 mb-5">
+        <div class="col-md-6 ">
+          <button *ngIf="authService.typeUser()" class="btn btn-outline-dark me-2" data-bs-toggle="modal"
+            data-bs-target="#exampleModal">Adicionar
+            Carro</button>
+          <a class="btn btn-outline-success" href="#carrinhos">Todos os Carros </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 d-flex justify-content-center">
+      <img src="../../assets/Car driving-cuate.png" alt="" style="width:70%">
+    </div>
+  </div>
+</div>
+<div class="container  mt-3 mb-3" style="min-height:60rem" id="carrinhos">
+  <nav>
+    <div class="nav nav-tabs d-flex justify-content-center " id="nav-tab" role="tablist">
+      <h2>Carros</h2>
+    </div>
+  </nav>
+
+  <div class="tab-content" id="nav-todosOsCarros">
+    <div class="tab-pane fade" id="nav-ordemValor" role="tabpanel" aria-labelledby="nav-ordemValor-tab">Carros
+    </div>
+    <div class="card-columns card-cars">
+      <div class="card" *ngFor="let item of listaPostagem | orderBy : key :reverse">
+        <img src="{{item.foto}}" class="card-img-top" style="width: 12rem; height: 10rem;">
+        <div class="card-body text-center">
+          <h5 class="card-title">Marca: {{item.marca}}</h5>
+          <p class="card-text">Modelo: {{item.modelo}}.</p>
+          <p class="card-text">Valor: {{item.valor}}</p>
+          <div>
+            <a *ngIf="authService.typeUser()" [routerLink]="['/carros-edit', item.idCar]" class="btn btn-primary me-3"
+              href="">Editar</a>
+            <a *ngIf="authService.typeUser()" [routerLink]="['/carros-apagar', item.idCar]" class="btn btn-danger"
+              href="">Apagar</a> <br>
+            <button class="btn btn-dark ms-2 mt-2" data-bs-toggle="modal"
+              data-bs-target="#exampleModalnova">Calcular
+              Carro</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Novo Carro</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="titulo">Marca</label>
+          <input [(ngModel)]='postagem.marca' type="text" class="form-control" id="marca" placeholder="Digite a Marca">
+        </div>
+        <div class="form-group">
+          <label for="texto">Modelo</label>
+          <input [(ngModel)]="postagem.modelo" class="form-control" name="modelo" id="modelo" rows="Modelo"
+            placeholder="Modelo do Carro">
+        </div>
+        <div class="form-group">
+          <label for="texto">Foto</label>
+          <input [(ngModel)]="postagem.foto" class="form-control" name="foto" id="foto" rows="Modelo"
+            placeholder="Link da sua foto">
+        </div>
+        <div class="form-group">
+          <label for="texto">Valor do Carro</label>
+          <input [(ngModel)]="postagem.valor" class="form-control" name="valor" id="valor" rows="Modelo"
+            placeholder="Valor do Carro">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-success" (click)="postar()" data-dismiss="modal">Postar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalnova" tabindex="-1" aria-labelledby="exampleModalnova" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalnova">Calcular Parcelas</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="texto">Valor a Vista</label>
+          <input [(ngModel)]="vendas.valorTotal" class="form-control" name="ValorVista" id="ValorVista">
+        </div>
+        <div class="form-group">
+          <label for="texto">Quantidade de Parcelas</label>
+          <input [(ngModel)]="vendas.quantParcela" class="form-control" name="QuantidadedeParcelas" id="QuantidadedeParcelas" >
+        </div>
+        <div class="form-group">
+          <label for="texto">Valor da Parcela</label>
+          <input [(ngModel)]="vendas.valorParcela" class="form-control" name="ValordaParcela" id="ValordaParcela" disabled>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary" (click)="calcularValor()">Calcular</button>
+      </div>
+    </div>
+  </div>
+</div>

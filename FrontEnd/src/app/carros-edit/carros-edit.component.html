@@ -1,0 +1,32 @@
+<div class="container mt-5 mb-5">
+  <div class="col-md-12">
+    <h1 class="text-center text-dark">Atualizar Veiculo</h1>
+  </div>
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="titulo">Marca</label>
+        <input [(ngModel)]='postagem.marca' type="text" class="form-control" id="marca" placeholder="Digite a Marca">
+      </div>
+      <div class="form-group mt-3">
+        <label for="texto">Modelo</label>
+        <input [(ngModel)]="postagem.modelo" class="form-control" name="modelo" id="modelo" rows="Modelo"
+          placeholder="Modelo do Carro">
+      </div>
+      <div class="form-group mt-3">
+        <label for="texto">Foto</label>
+        <input [(ngModel)]="postagem.foto" class="form-control" name="foto" id="foto" rows="Modelo"
+          placeholder="Link da sua foto">
+      </div>
+      <div class="form-group mt-3">
+        <label for="texto">Valor do Carro</label>
+        <input [(ngModel)]="postagem.valor" class="form-control" name="valor" id="valor" rows="Modelo"
+          placeholder="Valor do Carro">
+      </div>
+      <div class="d-flex justify-content-center mt-3">
+        <button class="btn btn-danger me-4 " routerLink='/inicio'>Cancelar</button>
+        <button class="btn btn-primary" (click)='atualizar()'>Atualizar</button>
+      </div>
+    </div>
+  </div>
+</div>

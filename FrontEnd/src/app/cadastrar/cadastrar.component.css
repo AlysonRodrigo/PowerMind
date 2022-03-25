@@ -1,0 +1,10 @@
+#img-bg{
+    background-image: url(../../assets/BMW-M5-car-front-view-Need-for-Speed-Payback_iphone_640x960.jpg);
+    min-height: 643px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.bg1{
+    background-color:rgb(236, 236, 236);
+}

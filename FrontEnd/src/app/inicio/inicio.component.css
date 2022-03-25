@@ -1,0 +1,17 @@
+
+.fs-54{
+    font-size: 54pt;
+}
+.fs-18{
+    font-size: 18pt;
+}
+.bg-n{
+    background-color:rgb(236, 236, 236);
+}
+.card-cars{
+    display: flex;
+    gap: 10px;
+    margin: 40px 5px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
